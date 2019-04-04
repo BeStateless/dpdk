@@ -1,0 +1,22 @@
+fix issue in ring pmd where memzones are not freed
+
+From: Aaron Jones <aaron@vexing.codes>
+
+
+---
+ drivers/net/ring/rte_eth_ring.c |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/net/ring/rte_eth_ring.c b/drivers/net/ring/rte_eth_ring.c
+index aeb48f5ec..d5de3b5b7 100644
+--- a/drivers/net/ring/rte_eth_ring.c
++++ b/drivers/net/ring/rte_eth_ring.c
+@@ -660,7 +660,7 @@ rte_pmd_ring_remove(struct rte_vdev_device *dev)
+ 		 * it is only necessary to delete the rings in rx_queues because
+ 		 * they are the same used in tx_queues
+ 		 */
+-		for (i = 0; i < eth_dev->data->nb_rx_queues; i++) {
++		for (i = 0; i < internals->max_rx_queues; i++) {
+ 			r = eth_dev->data->rx_queues[i];
+ 			rte_ring_free(r->rng);
+ 		}

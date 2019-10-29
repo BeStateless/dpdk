@@ -1,3 +1,12 @@
+Fix return types in rte_ipsec_ses_from_crypto.
+
+From: Travis Gockel <travis@gockelhut.com>
+
+
+---
+ lib/librte_ipsec/rte_ipsec_group.h |    4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
 diff --git a/lib/librte_ipsec/rte_ipsec_group.h b/lib/librte_ipsec/rte_ipsec_group.h
 index 740fa7c99..1010c8d6e 100644
 --- a/lib/librte_ipsec/rte_ipsec_group.h

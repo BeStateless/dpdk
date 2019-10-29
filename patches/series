@@ -1,3 +1,4 @@
 # This series applies on GIT commit v19.05
 ring-free.patch
 ipsec_group-cast-rte_ipsec_session.patch
+fix-igb-uio-compile.patch

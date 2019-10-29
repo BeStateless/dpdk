@@ -1,0 +1,21 @@
+Disable new warning when compiling igb_uio with newer gcc.
+
+From: Aaron Jones <aaron@vexing.codes>
+
+
+---
+ kernel/linux/igb_uio/Makefile |    1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/kernel/linux/igb_uio/Makefile b/kernel/linux/igb_uio/Makefile
+index f83bcc7c6..bbb559042 100644
+--- a/kernel/linux/igb_uio/Makefile
++++ b/kernel/linux/igb_uio/Makefile
+@@ -16,6 +16,7 @@ MODULE_CFLAGS += -I$(SRCDIR) --param max-inline-insns-single=100
+ MODULE_CFLAGS += -I$(RTE_OUTPUT)/include
+ MODULE_CFLAGS += -Winline -Wall -Werror
+ MODULE_CFLAGS += -include $(RTE_OUTPUT)/include/rte_config.h
++MODULE_CFLAGS += -Wno-implicit-fallthrough
+ 
+ #
+ # all source are stored in SRCS-y

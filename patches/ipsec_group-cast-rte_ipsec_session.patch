@@ -8,10 +8,10 @@ From: Travis Gockel <travis@gockelhut.com>
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/lib/librte_ipsec/rte_ipsec_group.h b/lib/librte_ipsec/rte_ipsec_group.h
-index 740fa7c99..1010c8d6e 100644
+index 47b33ca5e..27a2f6f26 100644
 --- a/lib/librte_ipsec/rte_ipsec_group.h
 +++ b/lib/librte_ipsec/rte_ipsec_group.h
-@@ -50,10 +50,10 @@ rte_ipsec_ses_from_crypto(const struct rte_crypto_op *cop)
+@@ -51,10 +51,10 @@ rte_ipsec_ses_from_crypto(const struct rte_crypto_op *cop)
  
  	if (cop->sess_type == RTE_CRYPTO_OP_SECURITY_SESSION) {
  		ss = cop->sym[0].sec_session;

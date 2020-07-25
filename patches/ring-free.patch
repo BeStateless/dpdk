@@ -8,10 +8,10 @@ From: Aaron Jones <aaron@vexing.codes>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/drivers/net/ring/rte_eth_ring.c b/drivers/net/ring/rte_eth_ring.c
-index ab963a03c..17bfaaeb0 100644
+index 733c89825..018b97aa7 100644
 --- a/drivers/net/ring/rte_eth_ring.c
 +++ b/drivers/net/ring/rte_eth_ring.c
-@@ -685,7 +685,7 @@ rte_pmd_ring_remove(struct rte_vdev_device *dev)
+@@ -681,7 +681,7 @@ rte_pmd_ring_remove(struct rte_vdev_device *dev)
  		 * it is only necessary to delete the rings in rx_queues because
  		 * they are the same used in tx_queues
  		 */

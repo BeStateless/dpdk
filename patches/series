@@ -1,4 +1,5 @@
-# This series applies on GIT commit v19.05
+# This series applies on GIT commit v20.08-rc3
 ring-free.patch
 ipsec_group-cast-rte_ipsec_session.patch
 fix-igb-uio-compile.patch
+trace.patch

@@ -1,5 +1,6 @@
-# This series applies on GIT commit v20.08-rc3
+# This series applies on GIT commit 6636b04b82897816e0e05134f55a578cb7e124bc
 ring-free.patch
 ipsec_group-cast-rte_ipsec_session.patch
 fix-igb-uio-compile.patch
 trace.patch
+disable_cqe_compression.patch

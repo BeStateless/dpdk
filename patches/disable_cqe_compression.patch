@@ -1,0 +1,47 @@
+Disable cqe_compression at the driver code level
+
+From: Andy Dickson <andy.dickson@stateless.net>
+
+
+---
+ drivers/net/mlx5/linux/mlx5_os.c |    4 ++++
+ drivers/net/mlx5/mlx5.c          |    4 ++++
+ 2 files changed, 8 insertions(+)
+
+diff --git a/drivers/net/mlx5/linux/mlx5_os.c b/drivers/net/mlx5/linux/mlx5_os.c
+index 69123e12c..edb41ffec 100644
+--- a/drivers/net/mlx5/linux/mlx5_os.c
++++ b/drivers/net/mlx5/linux/mlx5_os.c
+@@ -690,12 +690,16 @@ mlx5_dev_spawn(struct rte_device *dpdk_dev,
+ 			mprq_caps.max_single_wqe_log_num_of_strides;
+ 	}
+ #endif
++#ifndef SL_DISABLE_CQE_COMPRESSION
+ 	if (RTE_CACHE_LINE_SIZE == 128 &&
+ 	    !(dv_attr.flags & MLX5DV_CONTEXT_FLAGS_CQE_128B_COMP))
+ 		cqe_comp = 0;
+ 	else
+ 		cqe_comp = 1;
+ 	config->cqe_comp = cqe_comp;
++#else
++	config->cqe_comp = cqe_comp = 0;
++#endif
+ #ifdef HAVE_IBV_MLX5_MOD_CQE_128B_PAD
+ 	/* Whether device supports 128B Rx CQE padding. */
+ 	cqe_pad = RTE_CACHE_LINE_SIZE == 128 &&
+diff --git a/drivers/net/mlx5/mlx5.c b/drivers/net/mlx5/mlx5.c
+index 1e4c695f8..ca286932c 100644
+--- a/drivers/net/mlx5/mlx5.c
++++ b/drivers/net/mlx5/mlx5.c
+@@ -1518,7 +1518,11 @@ mlx5_args_check(const char *key, const char *val, void *opaque)
+ 	}
+ 	mod = tmp >= 0 ? tmp : -tmp;
+ 	if (strcmp(MLX5_RXQ_CQE_COMP_EN, key) == 0) {
++#ifndef SL_DISABLE_CQE_COMPRESSION
+ 		config->cqe_comp = !!tmp;
++#else
++		config->cqe_comp = 0;
++#endif
+ 	} else if (strcmp(MLX5_RXQ_CQE_PAD_EN, key) == 0) {
+ 		config->cqe_pad = !!tmp;
+ 	} else if (strcmp(MLX5_RXQ_PKT_PAD_EN, key) == 0) {

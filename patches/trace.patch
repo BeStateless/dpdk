@@ -8,7 +8,7 @@ From: Dennis Afanasev <dennis.afa@gmail.com>
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/lib/librte_eal/include/rte_trace_point.h b/lib/librte_eal/include/rte_trace_point.h
-index b03960277..d328a9ff8 100644
+index b03960277..051c3376c 100644
 --- a/lib/librte_eal/include/rte_trace_point.h
 +++ b/lib/librte_eal/include/rte_trace_point.h
 @@ -298,13 +298,13 @@ RTE_DECLARE_PER_LCORE(void *, trace_mem);
